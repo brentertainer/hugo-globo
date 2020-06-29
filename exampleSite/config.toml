@@ -1,0 +1,11 @@
+baseURL = "https://example.com"
+title = "Example Site"
+theme = "hugo-globo"
+
+[outputs]
+    home = ["html", "rss", "json"]
+
+[taxonomies]
+    tags = "tags"
+    site = "sites"
+    category = "categories"

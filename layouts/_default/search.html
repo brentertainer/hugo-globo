@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <div class="container">
+      {{ partial "header.html" . }}
+      <div id="content" class="row">
+        <div class="offset-lg-1 col-lg-10
+                    offset-md-1 col-md-10
+                    offset-sm-2 col-sm-8
+                    offset-2    col-8">
+          <ul class="bookmark">
+            <!-- templating magic happens in this div -->
+            <div id="search-results"></div>
+          </ul>
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+
+    <script>
+    function createTagLink(item, index) {
+        tagLink = "<a href=\"" + item + "\">" + tag + "</a>";
+        document.getElementById("search-result-template").innerHTML += tagLink
+    }
+    </script>
+
+    <!-- this template is sucked in by search.js and appended to the search-results div above -->
+    <script id="search-result-template" type="text/x-js-template">
+      <li class="bookmark">
+        <p class="bookmark-major-clip">
+          <a href="${bookmarkurl}">${title}</a>
+        </p>
+        <p class="bookmark-minor-clip">
+          <a href="${link}">
+            > ${date}
+          </a> |
+          <a href="/sites/${sites}">${sites}</a> |
+          ${labellinks}
+        </p>
+        </div>
+      </li>
+    </script>
+
+  </body>
+</html>

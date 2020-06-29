@@ -1,0 +1,218 @@
+/*
+ * PARAMETERS -----------------------------------------------------------------
+ */
+:root {
+    /* color swab definitions */
+    --pri-color-1: #bf5700;
+    --pri-color-2: #333f48;
+    --pri-color-3: #ffffff;
+    --sec-color-1: #f8971f;
+    --sec-color-2: #ffd600;
+    --sec-color-3: #a6cd57;
+    --sec-color-4: #579d42;
+    --sec-color-5: #00a9b7;
+    --sec-color-6: #005f86;
+    --sec-color-7: #9cadb7;
+    --sec-color-8: #d6d2c4;
+    /* actual styling */
+    --warm-color:   var(--pri-color-1);
+    --cold-color:   var(--pri-color-2);
+    --fill-color-1: var(--sec-color-8);
+    --fill-color-2: var(--sec-color-7);
+    --fill-color-3: var(--pri-color-3);
+}
+
+
+/*
+ * GENERAL --------------------------------------------------------------------
+ */
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, sans-serif;
+    background: var(--fill-color-3);
+}
+
+input {
+    border: 1px solid var(--warm-color);
+    caret-color: var(--warm-color);
+    color: var(--warm-color);
+    padding: 0.25rem;
+}
+
+input:focus {
+    border: 1px solid var(--cold-color);
+    caret-color: var(--cold-color);
+    color: var(--cold-color);
+}
+
+
+/*
+ * RESOURCE -------------------------------------------------------------------
+ */
+
+ul.bookmark {
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--cold-color);
+}
+
+li.bookmark {
+    padding: 0.5rem;
+    margin: 0;
+}
+
+li:nth-child(odd).bookmark {
+    background: var(--fill-color-1);
+}
+
+li:nth-child(even).bookmark {
+    background: var(--fill-color-2);
+}
+
+p.bookmark-major,
+p.bookmark-major-clip {
+    margin: 0;
+    font-size: 14px;
+    color: var(--cold-color);
+}
+
+p.bookmark-major-clip {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 1.5em;
+}
+
+p.bookmark-major > a,
+p.bookmark-major-clip > a {
+    color: var(--cold-color);
+    text-decoration: none;
+}
+
+
+p.bookmark-minor,
+p.bookmark-minor-clip {
+    margin: 0;
+    font-size: 10px;
+    color: var(--cold-color);
+}
+
+p.bookmark-minor-clip {
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 1.5em;
+}
+
+p.bookmark-minor > a,
+p.bookmark-minor-clip > a {
+    color: var(--cold-color);
+    text-decoration: none;
+}
+
+
+/*
+ * PAGINATION -----------------------------------------------------------------
+ */
+
+ul.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+ul.pagination li {
+    margin: 0 0.5rem 0 0;
+}
+
+ul.pagination li a,
+ul.pagination li:hover a {
+    border: 1px solid var(--cold-color);
+    background: var(--fill-color-1);
+    color: var(--cold-color);
+    padding: 0.25rem;
+    text-align: center;
+    text-decoration: none;
+    width: 32px;
+}
+
+ul.pagination li:hover a {
+    font-weight: bold;
+}
+
+ul.pagination li.disabled a,
+ul.pagination li.disabled:hover a {
+    border: 1px solid var(--cold-color);
+    background: var(--fill-color-3);
+    color: var(--cold-color);
+}
+
+ul.pagination li.disabled:hover a {
+    font-weight: bold;
+}
+
+ul.pagination li.active > a,
+ul.pagination li.active:hover > a {
+    /*
+     * need !important here
+     * bootstrap 4 seems to be the culprit
+     * did not need this with bootstrap 3
+     */
+    border: 1px solid var(--cold-color) !important;
+    background: var(--fill-color-2) !important;
+    color: var(--cold-color) !important;
+}
+
+ul.pagination li.active:hover a {
+    font-weight: bold;
+}
+
+
+/*
+ * BOOTSTRAP GRID -------------------------------------------------------------
+ */
+
+div.container {
+    padding: 0;
+    margin: 0;
+}
+
+div.row#header,
+div.row#footer,
+div.row#options,
+div.row#content {
+    background: var(--fill-color-3);
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+div.row#header {
+    color: var(--warm-color);
+    font-size: 24px;
+}
+
+div.row#footer {
+    color: var(--warm-color);
+    font-size: 12px;
+}
+
+div.row#options {
+    color: var(--warm-color);
+    font-size: 16px;
+}
+
+div.row#content {
+    color: var(--cold-color);
+    font-size: 12px;
+}
+
+a.header, a.footer {
+    color: var(--warm-color);
+    text-decoration: none;
+}

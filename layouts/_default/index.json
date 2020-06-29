@@ -1,0 +1,9 @@
+{{- $.Scratch.Add "index" slice -}}
+{{- range .Site.RegularPages -}}
+  {{- $.Scratch.Set "tmp" (dict) -}}
+  {{- $.Scratch.Set "tmp" (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "sites" .Params.sites "contents" .Plain "date" (.PublishDate.Format "2006-01-02 15:04") "bookmarkurl" .Params.BookmarkUrl "permalink" .Permalink) -}}
+  {{- if ($.Scratch.Get "tmp") "not in" ($.Scratch.Get "index") -}}
+    {{- $.Scratch.Add "index" ($.Scratch.Get "tmp") -}}
+  {{- end -}}
+{{- end -}}
+{{- $.Scratch.Get "index" | jsonify -}}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "head.html" }}
+  <body>
+    <div class="container">
+      {{ partial "header.html" . }}
+      <div id="content" class="row">
+        <div class="offset-lg-1 col-lg-10
+                    offset-md-1 col-md-10
+                    offset-sm-2 col-sm-8
+                    offset-2    col-8">
+          <ul class="bookmark">
+            {{ range $index, $element := where .Paginator.Pages ".Layout" "!=" "search" }}
+            {{ $site := urls.Parse .Params.BookmarkUrl }}
+            <li class="bookmark">
+              <p class="bookmark-major-clip">
+                <!-- link to bookmark -->
+                <a href="{{ .Params.BookmarkUrl }}">{{ .Title }}</a>
+              </p>
+              <p class="bookmark-minor-clip">
+                <!-- date notes were written -->
+                <a href="{{ .Permalink }}">
+                  > {{ .PublishDate.Format "2006-01-02 15:04" }}
+                </a> |
+                <!-- link to bookmark site -->
+                <a href="/sites/{{ replace $site.Host "www." "" }}">{{ replace $site.Host "www." "" }}</a> |
+                <!-- list of tags -->
+                {{ range .Params.tags }}
+                  <a href="/tags/{{- replace . " " "-" -}}">{{- . -}}</a>
+                {{- end }}
+                <!-- list of categories -->
+                {{ range .Params.categories }}
+                  <a href="/categories/{{- replace . " " "-" -}}">{{- . -}}</a>
+                {{- end }}
+              </p>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+      <div id="content" class="row">
+        <div class="offset-lg-1 col-lg-10
+                    offset-md-1 col-md-10
+                    offset-sm-2 col-sm-8
+                    offset-2    col-8">
+          {{ template "_internal/pagination.html" . }}
+        </div>
+      </div>
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+</html>
