@@ -232,6 +232,18 @@ div#bookmark {
     /*border: 1px solid var(--cold-color);*/
 }
 
+div#bookmark > table > thead > tr > th {
+    border: 1px solid var(--cold-color);
+    background: var(--fill-color-2);
+    padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
+div#bookmark > table > tbody > tr > td {
+    border: 1px solid var(--cold-color);
+    background: var(--fill-color-1);
+    padding: 0.25em 0.5em 0.25em 0.5em;
+}
+
 a.header, a.footer {
     color: var(--warm-color);
     text-decoration: none;
