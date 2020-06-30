@@ -9,33 +9,37 @@
                     offset-md-1 col-md-10
                     offset-sm-2 col-sm-8
                     offset-2    col-8">
-          <ul class="bookmark">
-            <li class="bookmark">
-              {{ $site := urls.Parse .Params.BookmarkUrl }}
-              <p class="bookmark-major">
-                <!-- link to bookmark -->
-                <a href="{{ .Params.BookmarkUrl }}">{{ .Title }}</a>
-              </p>
-              <p class="bookmark-minor">
-                <!-- link to bookmark site -->
-                {{ .PublishDate.Format "2006-01-02 15:04" }} |
-                <!-- date notes were written -->
-                <a href="/sites/{{ replace $site.Host "www." "" }}">{{ replace $site.Host "www." "" }}</a> |
-                <!-- list of tags -->
-                {{ range .Params.tags }}
-                  <a class="bookmark__tag" href="/tags/{{- replace . " " "-" -}}">{{- . -}}</a>
-                {{- end }}
-                <!-- list of categories -->
-                {{ range .Params.categories }}
-                  <a class="bookmark__tag" href="/categories/{{- replace . " " "-" -}}">{{- . -}}</a>
-                {{- end }}
-              </p>
-              <p class="bookmark-major">
-                <br>
-                {{ .Content }}
-              </p>
-            </li>
-          </ul>
+          <div id="bookmark-wrapper">
+            <div id="bookmark-scroller">
+              <div id="bookmark">
+                {{ $site := urls.Parse .Params.BookmarkUrl }}
+                <b>
+                <p class="bookmark-major">
+                  <!-- link to bookmark -->
+                  <a href="{{ .Params.BookmarkUrl }}">{{ .Title }}</a>
+                </p>
+                <p class="bookmark-minor">
+                  <!-- link to bookmark site -->
+                  {{ .PublishDate.Format "2006-01-02 15:04" }} |
+                  <!-- date notes were written -->
+                  <a href="/sites/{{ replace $site.Host "www." "" }}">{{ replace $site.Host "www." "" }}</a> |
+                  <!-- list of tags -->
+                  {{ range .Params.tags }}
+                    <a class="bookmark__tag" href="/tags/{{- replace . " " "-" -}}">{{- . -}}</a>
+                  {{- end }}
+                  <!-- list of categories -->
+                  {{ range .Params.categories }}
+                    <a class="bookmark__tag" href="/categories/{{- replace . " " "-" -}}">{{- . -}}</a>
+                  {{- end }}
+                </p>
+                </b>
+                <p class="bookmark-major">
+                  <br>
+                  {{ .Content }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {{ partial "footer.html" . }}
