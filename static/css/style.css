@@ -212,6 +212,26 @@ div.row#content {
     font-size: 12px;
 }
 
+div#bookmark-wrapper {
+    border: 1px solid var(--cold-color);
+    background: var(--fill-color-1);
+}
+
+div#bookmark-scroller {
+    /* height main page paginator less 2px for border*/
+    /* 522 - 2 = 520 */
+    height: 520px;
+    overflow-y: scroll;
+}
+
+div#bookmark {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    /*margin: 0 0.5rem 0 0.5rem;*/
+    color: var(--cold-color);
+    font-size: 12px;
+    /*border: 1px solid var(--cold-color);*/
+}
+
 a.header, a.footer {
     color: var(--warm-color);
     text-decoration: none;
